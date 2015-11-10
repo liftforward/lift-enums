@@ -9,6 +9,8 @@ The possibilities are limitless.
 * Add to the consuming app's `package.json` under `devDepencies`:
 
 ```json
+//package.json
+
 "devDependencies": {
   "lift-enums": "liftforward/lift-enums"
 }
