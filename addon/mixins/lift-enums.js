@@ -1,6 +1,9 @@
 import Ember from 'ember';
 
 export default Ember.Mixin.create({
+  toHashes(array) {
+    return array.map((a) => { return { id: a, name: a }; });
+  },
   structures: [
     "Corporation",
     "S Corporation",
@@ -14,12 +17,18 @@ export default Ember.Mixin.create({
     "Government Entity",
     "Educational Institution"
   ],
+  structuresOptions: Ember.computed('structures', function() {
+    return this.toHashes(this.get('structures'));
+  }),
   structuresExemptFromGuarantors: [
     "Political Campaign",
     "Government Entity",
     "Educational Institution"
   ],
-  purposeOfFundsOptions: [
+  structuresExemptFromGuarantosOptions: Ember.computed('structuresExemptFromGuarantors', function() {
+    return this.toHashes(this.get('structuresExemptFromGuarantors'));
+  }),
+  purposeOfFunds: [
     'Business Remodel',
     'Business Expansion',
     'Inventory Financing',
@@ -27,13 +36,19 @@ export default Ember.Mixin.create({
     'Additional Equipment/Technology',
     'Working Capital'
   ],
-  businessSalesOptions : [
+  purposeOfFundsOptions: Ember.computed('purposeOfFunds', function() {
+    return this.toHashes(this.get('purposeOfFunds'));
+  }),
+  businessSales : [
     "below 250k",
     "250k - 500k",
     "500k - 1.0m",
     "1.0m - 1.5m",
     "above 1.5m"
   ],
+  businessSalesOptions: Ember.computed('businessSales', function() {
+    return this.toHashes(this.get('businessSales'));
+  }),
   bankruptcyOptions: [
     { label : "yes" , value : 'true'  },
     { label : "no"  , value : 'false' }
