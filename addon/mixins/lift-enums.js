@@ -1,8 +1,8 @@
 import Ember from 'ember';
 
 export default Ember.Mixin.create({
-  toHashes(array) {
-    return array.map((a) => { return { id: a, name: a }; });
+  getOptions(str) {
+    return this.get(str).map((a) => { return { id: a, name: a }; });
   },
   structures: [
     "Corporation",
@@ -18,15 +18,15 @@ export default Ember.Mixin.create({
     "Educational Institution"
   ],
   structuresOptions: Ember.computed('structures', function() {
-    return this.toHashes(this.get('structures'));
+    return this.getOptions('structures');
   }),
   structuresExemptFromGuarantors: [
     "Political Campaign",
     "Government Entity",
     "Educational Institution"
   ],
-  structuresExemptFromGuarantosOptions: Ember.computed('structuresExemptFromGuarantors', function() {
-    return this.toHashes(this.get('structuresExemptFromGuarantors'));
+  structuresExemptFromGuarantorsOptions: Ember.computed('structuresExemptFromGuarantors', function() {
+    return this.getOptions('structuresExemptFromGuarantors');
   }),
   purposeOfFunds: [
     'Business Remodel',
@@ -37,7 +37,7 @@ export default Ember.Mixin.create({
     'Working Capital'
   ],
   purposeOfFundsOptions: Ember.computed('purposeOfFunds', function() {
-    return this.toHashes(this.get('purposeOfFunds'));
+    return this.getOptions('purposeOfFunds');
   }),
   businessSales : [
     "below 250k",
@@ -47,12 +47,18 @@ export default Ember.Mixin.create({
     "above 1.5m"
   ],
   businessSalesOptions: Ember.computed('businessSales', function() {
-    return this.toHashes(this.get('businessSales'));
+    return this.getOptions('businessSales');
   }),
   bankruptcyOptions: [
     { label : "yes" , value : 'true'  },
     { label : "no"  , value : 'false' }
   ],
+  localesUsStatesOptions: Ember.computed('locales.us.states', function() {
+    return this.getOptions('locales.us.states');
+  }),
+  localesCaStatesOptions: Ember.computed('locales.ca.states', function() {
+    return this.getOptions('locales.ca.states');
+  }),
   locales: {
     us: {
       currency : 'USD',
