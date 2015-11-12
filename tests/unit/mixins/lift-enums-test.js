@@ -31,7 +31,7 @@ const structuresExemptFromGuarantors = [
     "Educational Institution"
   ];
   
-const purposeOfFunds = [
+const purposeOfFundsList = [
     'Business Remodel',
     'Business Expansion',
     'Inventory Financing',
@@ -143,7 +143,7 @@ const locales = {
 test('it mixes in the enums', function(assert) {
   assert.deepEqual(subject.get("structures"), structures);
   assert.deepEqual(subject.get("structuresExemptFromGuarantors"), structuresExemptFromGuarantors);
-  assert.deepEqual(subject.get("purposeOfFunds"), purposeOfFunds);
+  assert.deepEqual(subject.get("purposeOfFundsList"), purposeOfFundsList);
   assert.deepEqual(subject.get("businessSales"), businessSales);
   assert.deepEqual(subject.get("bankruptcyOptions"), bankruptcyOptions);
   assert.deepEqual(subject.get("locales.us.states"), locales.us.states);

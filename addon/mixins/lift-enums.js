@@ -28,7 +28,7 @@ export default Ember.Mixin.create({
   structuresExemptFromGuarantorsOptions: Ember.computed('structuresExemptFromGuarantors', function() {
     return this.getOptions('structuresExemptFromGuarantors');
   }),
-  purposeOfFunds: [
+  purposeOfFundsList: [
     'Business Remodel',
     'Business Expansion',
     'Inventory Financing',
@@ -36,8 +36,8 @@ export default Ember.Mixin.create({
     'Additional Equipment/Technology',
     'Working Capital'
   ],
-  purposeOfFundsOptions: Ember.computed('purposeOfFunds', function() {
-    return this.getOptions('purposeOfFunds');
+  purposeOfFundsOptions: Ember.computed('purposeOfFundsList', function() {
+    return this.getOptions('purposeOfFundsList');
   }),
   businessSales : [
     "below 250k",
