@@ -12,9 +12,10 @@ The possibilities are limitless.
 //package.json
 
 "devDependencies": {
-  "lift-enums": "liftforward/lift-enums"
+  "lift-enums": "liftforward/lift-enums@current-release-tag"
 }
 ```
+(replace `current-release-tag` with the release you want to include)
 
 * `npm install`
 
