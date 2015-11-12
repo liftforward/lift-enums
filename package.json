@@ -1,7 +1,7 @@
 {
   "name": "lift-enums",
   "version": "0.0.2",
-  "description": "The default blueprint for ember-cli addons.",
+  "description": "Common enums for liftforward forms",
   "directories": {
     "doc": "doc",
     "test": "tests"
