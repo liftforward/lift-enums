@@ -1,4 +1,4 @@
-# Lift-enums
+# lift-enums
 
 Contains useful lists used in bot the lift and lift-admin ember projects.   
 Use it for localization, or to populate select boxes.   
