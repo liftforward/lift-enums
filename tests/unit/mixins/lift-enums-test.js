@@ -12,6 +12,14 @@ moduleFor('mixin:lift-enums', {
 }); 
 
 const EXP = {
+  suffixes: 
+    [
+      "Sr",
+      "Jr" ,
+      "II",
+      "III",
+      "IV"
+    ],
   structures : 
     [
       "Corporation",
@@ -145,6 +153,7 @@ const locales = {
 
 test('it mixes in the enums', function(assert) {
   assert.deepEqual(subject.get("structures"), EXP.structures);
+  assert.deepEqual(subject.get("suffixes"), EXP.suffixes);
   assert.deepEqual(subject.get("structuresExemptFromGuarantors"), EXP.structuresExemptFromGuarantors);
   assert.deepEqual(subject.get("purposeOfFundsList"), EXP.purposeOfFundsList);
   assert.deepEqual(subject.get("businessSales"), EXP.businessSales);
@@ -156,6 +165,7 @@ test('it mixes in the enums', function(assert) {
 
 
 const enumLists = [
+  { list: "suffixes", options: "suffixesOptions" },
   { list: "structures", options: "structuresOptions" },
   { list: "purposeOfFundsList", options: "purposeOfFundsOptions" },
   { list: "businessSales", options: "businessSalesOptions" },
