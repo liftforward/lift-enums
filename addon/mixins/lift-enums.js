@@ -4,6 +4,17 @@ export default Ember.Mixin.create({
   getOptions(str) {
     return this.get(str).map((a) => { return { id: a, name: a }; });
   },
+  suffixes: 
+    [
+      "Sr",
+      "Jr" ,
+      "II",
+      "III",
+      "IV"
+    ],
+  suffixesOptions: Ember.computed('suffixes', function() {
+    return this.getOptions('suffixes');
+  }),
   structures: [
     "Corporation",
     "S Corporation",
