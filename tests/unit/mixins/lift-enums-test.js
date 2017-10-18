@@ -9,61 +9,63 @@ moduleFor('mixin:lift-enums', {
     var objWithMixin = Ember.Object.extend(liftEnums);
     subject = objWithMixin.create();
   }
-}); 
+});
 
 const EXP = {
-  suffixes: 
-    [
-      "Sr",
-      "Jr" ,
-      "II",
-      "III",
-      "IV"
-    ],
-  structures : 
-    [
-      "Corporation",
-      "S Corporation",
-      "Limited Corporation",
-      "Limited Liability Corporation",
-      "Partnership",
-      "Limited Liability Partnership",
-      "Sole Proprietorship",
-      "Not-for-Profit",
-      "Political Campaign",
-      "Government Entity",
-      "Educational Institution"
-    ],
-  structuresExemptFromGuarantors : 
-    [
-      "Political Campaign",
-      "Government Entity",
-      "Educational Institution"
-    ],
-  purposeOfFundsList : 
-    [
-      'Business Remodel',
-      'Business Expansion',
-      'Inventory Financing',
-      'Marketing Services',
-      'Additional Equipment/Technology',
-      'Working Capital'
-    ],
-  businessSales : 
-    [
-      "below 250k",
-      "250k - 500k",
-      "500k - 1.0m",
-      "1.0m - 1.5m",
-      "above 1.5m"
-    ],
+  businessSales: [
+    "below 250k",
+    "250k - 500k",
+    "500k - 1.0m",
+    "1.0m - 1.5m",
+    "above 1.5m"
+  ],
+  purposeOfFundsList: [
+    'Business Remodel',
+    'Business Expansion',
+    'Inventory Financing',
+    'Marketing Services',
+    'Additional Equipment/Technology',
+    'Working Capital'
+  ],
+  structures: [
+    "Corporation",
+    "S Corporation",
+    "Limited Corporation",
+    "Limited Liability Corporation",
+    "Partnership",
+    "Limited Liability Partnership",
+    "Sole Proprietorship",
+    "Not-for-Profit",
+    "Political Campaign",
+    "Government Entity",
+    "Educational Institution"
+  ],
+  structuresExemptFromGuarantors: [
+    "Political Campaign",
+    "Government Entity",
+    "Educational Institution"
+  ],
+  suffixes: [
+    "Sr",
+    "Jr",
+    "II",
+    "III",
+    "IV"
+  ]
 };
-  
+
 const bankruptcyOptions = [
     { label : "yes" , value : 'true'  },
     { label : "no"  , value : 'false' }
   ];
-  
+
+const guarantorRoles = [
+  "Owner",
+  "Officer",
+  "IT Manager",
+  "Other"
+];
+
 const locales = {
     us: {
       currency : 'USD',
@@ -152,24 +154,26 @@ const locales = {
 
 
 test('it mixes in the enums', function(assert) {
-  assert.deepEqual(subject.get("structures"), EXP.structures);
-  assert.deepEqual(subject.get("suffixes"), EXP.suffixes);
-  assert.deepEqual(subject.get("structuresExemptFromGuarantors"), EXP.structuresExemptFromGuarantors);
-  assert.deepEqual(subject.get("purposeOfFundsList"), EXP.purposeOfFundsList);
-  assert.deepEqual(subject.get("businessSales"), EXP.businessSales);
   assert.deepEqual(subject.get("bankruptcyOptions"), bankruptcyOptions);
-  assert.deepEqual(subject.get("locales.us.states"), locales.us.states);
+  assert.deepEqual(subject.get("businessSales"), EXP.businessSales);
+  assert.deepEqual(subject.get("guarantorRolesOptions"), guarantorRoles);
   assert.deepEqual(subject.get("locales.ca.states"), locales.ca.states);
+  assert.deepEqual(subject.get("locales.us.states"), locales.us.states);
   assert.deepEqual(subject.get("locales.uk.currency"), locales.uk.currency);
+  assert.deepEqual(subject.get("purposeOfFundsList"), EXP.purposeOfFundsList);
+  assert.deepEqual(subject.get("structures"), EXP.structures);
+  assert.deepEqual(subject.get("structuresExemptFromGuarantors"), EXP.structuresExemptFromGuarantors);
+  assert.deepEqual(subject.get("suffixes"), EXP.suffixes);
 });
 
 
 const enumLists = [
-  { list: "suffixes", options: "suffixesOptions" },
-  { list: "structures", options: "structuresOptions" },
-  { list: "purposeOfFundsList", options: "purposeOfFundsOptions" },
   { list: "businessSales", options: "businessSalesOptions" },
+  { list: "guarantorRoles", options: "guarantorRolesOptions" },
+  { list: "purposeOfFundsList", options: "purposeOfFundsOptions" },
+  { list: "structures", options: "structuresOptions" },
   { list: "structuresExemptFromGuarantors", options: "structuresExemptFromGuarantorsOptions" },
+  { list: "suffixes", options: "suffixesOptions" },
 
 ];
 
@@ -181,8 +185,8 @@ enumLists.forEach(function({ list, options }) {
 });
 
 const localeStates = [
-  { list: locales.us.states, options: "localesUsStatesOptions" },
   { list: locales.ca.states, options: "localesCaStatesOptions" },
+  { list: locales.us.states, options: "localesUsStatesOptions" },
 ];
 
 

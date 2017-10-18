@@ -1,79 +1,31 @@
 import Ember from 'ember';
 
-export default Ember.Mixin.create({
+const {computed, Mixin} = Ember;
+
+export default Mixin.create({
   getOptions(str) {
-    return this.get(str).map((a) => { return { id: a, name: a }; });
+    return this.get(str).map((a) => {
+      return {id: a, name: a};
+    });
   },
-  suffixes: 
-    [
-      "Sr",
-      "Jr" ,
-      "II",
-      "III",
-      "IV"
-    ],
-  suffixesOptions: Ember.computed('suffixes', function() {
-    return this.getOptions('suffixes');
-  }),
-  structures: [
-    "Corporation",
-    "S Corporation",
-    "Limited Corporation",
-    "Limited Liability Corporation",
-    "Partnership",
-    "Limited Liability Partnership",
-    "Sole Proprietorship",
-    "Not-for-Profit",
-    "Political Campaign",
-    "Government Entity",
-    "Educational Institution"
-  ],
-  structuresOptions: Ember.computed('structures', function() {
-    return this.getOptions('structures');
-  }),
-  structuresExemptFromGuarantors: [
-    "Political Campaign",
-    "Government Entity",
-    "Educational Institution"
-  ],
-  structuresExemptFromGuarantorsOptions: Ember.computed('structuresExemptFromGuarantors', function() {
-    return this.getOptions('structuresExemptFromGuarantors');
-  }),
-  purposeOfFundsList: [
-    'Business Remodel',
-    'Business Expansion',
-    'Inventory Financing',
-    'Marketing Services',
-    'Additional Equipment/Technology',
-    'Working Capital'
-  ],
-  purposeOfFundsOptions: Ember.computed('purposeOfFundsList', function() {
-    return this.getOptions('purposeOfFundsList');
-  }),
-  businessSales : [
+
+  businessSales: [
     "below 250k",
     "250k - 500k",
     "500k - 1.0m",
     "1.0m - 1.5m",
     "above 1.5m"
   ],
-  businessSalesOptions: Ember.computed('businessSales', function() {
-    return this.getOptions('businessSales');
-  }),
-  bankruptcyOptions: [
-    { label : "yes" , value : 'true'  },
-    { label : "no"  , value : 'false' }
+  guarantorRoles: [
+    "Owner",
+    "Officer",
+    "IT Manager",
+    "Other"
   ],
-  localesUsStatesOptions: Ember.computed('locales.us.states', function() {
-    return this.getOptions('locales.us.states');
-  }),
-  localesCaStatesOptions: Ember.computed('locales.ca.states', function() {
-    return this.getOptions('locales.ca.states');
-  }),
   locales: {
     us: {
-      currency : 'USD',
-      locale : 'en',
+      currency: 'USD',
+      locale: 'en',
       flagSrc: '/assets/flags/United-States.png',
       states: [
         "Alabama",
@@ -127,11 +79,11 @@ export default Ember.Mixin.create({
         "West Virginia",
         "Wisconsin",
         "Wyoming"
-          ]
+      ]
     },
     ca: {
-      currency : 'CAD',
-      locale : 'en-ca',
+      currency: 'CAD',
+      locale: 'en-ca',
       flagSrc: '/assets/flags/Canada.png',
       states: [
         "Alberta",
@@ -149,11 +101,73 @@ export default Ember.Mixin.create({
       ]
     },
     uk: {
-      currency : 'GBP',
-      locale : 'en-gb',
+      currency: 'GBP',
+      locale: 'en-gb',
       flagSrc: '/assets/flags/United-Kingdom.png',
       states: null //left null to indicate don't ask question
     }
   },
+  purposeOfFundsList: [
+    'Business Remodel',
+    'Business Expansion',
+    'Inventory Financing',
+    'Marketing Services',
+    'Additional Equipment/Technology',
+    'Working Capital'
+  ],
+  structures: [
+    "Corporation",
+    "S Corporation",
+    "Limited Corporation",
+    "Limited Liability Corporation",
+    "Partnership",
+    "Limited Liability Partnership",
+    "Sole Proprietorship",
+    "Not-for-Profit",
+    "Political Campaign",
+    "Government Entity",
+    "Educational Institution"
+  ],
+  structuresExemptFromGuarantors: [
+    "Political Campaign",
+    "Government Entity",
+    "Educational Institution"
+  ],
+  suffixes: [
+    "Sr",
+    "Jr",
+    "II",
+    "III",
+    "IV"
+  ],
+
+  bankruptcyOptions: [
+    {label: "yes", value: 'true'},
+    {label: "no", value: 'false'}
+  ],
+  businessSalesOptions: computed('businessSales', function () {
+    return this.getOptions('businessSales');
+  }),
+  guarantorRolesOptions: computed("guarantorRoles", function () {
+    return this.getOptions("guarantorRoles");
+  }),
+  localesCaStatesOptions: computed('locales.ca.states', function () {
+    return this.getOptions('locales.ca.states');
+  }),
+  localesUsStatesOptions: computed('locales.us.states', function () {
+    return this.getOptions('locales.us.states');
+  }),
+  suffixesOptions: computed('suffixes', function () {
+    return this.getOptions('suffixes');
+  }),
+  structuresOptions: computed('structures', function () {
+    return this.getOptions('structures');
+  }),
+  structuresExemptFromGuarantorsOptions: computed('structuresExemptFromGuarantors', function () {
+    return this.getOptions('structuresExemptFromGuarantors');
+  }),
+  purposeOfFundsOptions: computed('purposeOfFundsList', function () {
+    return this.getOptions('purposeOfFundsList');
+  })
 });
 
