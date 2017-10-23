@@ -9,6 +9,11 @@ export default Mixin.create({
     });
   },
 
+  booleanOptions: [
+    {id: 'yes', name: true},
+    {id: 'no', name: false}
+  ],
+
   businessSales: [
     "below 250k",
     "250k - 500k",
