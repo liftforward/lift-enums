@@ -1,6 +1,6 @@
 {
   "name": "lift-enums",
-  "version": "0.0.7",
+  "version": "0.1.0",
   "description": "Common enums for liftforward forms",
   "directories": {
     "doc": "doc",
